@@ -1,0 +1,199 @@
+int counter = 0;
+const int TIMEUNIT = 330;
+
+// the setup function runs once when you press reset or power the board
+void setup() {
+  // initialize digital pin 13 as an output.
+  pinMode(13, OUTPUT);
+  pinMode(8, OUTPUT);
+}
+
+// the loop function runs over and over again forever
+void loop() {
+  counter = 0;
+  getReady();
+  blinkA();
+  blinkO();
+  blinkW();
+  blinkE();
+  blinkN();
+  delay(TIMEUNIT*6);
+  blinkO();
+  blinkV();
+  blinkI();
+  delay(TIMEUNIT*6);
+  blinkS();
+  blinkC();
+  blinkO();
+  blinkR();
+  blinkE();
+  blinkD();
+  delay(TIMEUNIT*6);
+}
+
+void getReady(){
+  delay(TIMEUNIT);
+  digitalWrite(8, HIGH);
+  digitalWrite(13, HIGH);
+  delay(3000);
+  digitalWrite(8, LOW);
+  digitalWrite(13, LOW);
+  delay(1500);
+}
+void blinkO(){
+  if(counter % 2 == 0){
+    longRed();
+    longRed();
+    longRed();  
+  }else{
+    longGreen();
+    longGreen();
+    longGreen();
+  }
+  delay(TIMEUNIT*2);
+  counter++;
+}
+void blinkA(){
+  if(counter % 2 == 0){
+    shortRed();
+    longRed(); 
+  }else{
+    shortGreen();
+    longGreen();
+  }
+  delay(TIMEUNIT*2);
+  counter++;
+}
+void blinkC(){
+  if(counter % 2 == 0){
+    longRed();
+    shortRed();
+    longRed();
+    shortRed();  
+  }else{
+    longGreen();
+    shortGreen();
+    longGreen();
+    shortGreen();
+  }
+  delay(TIMEUNIT*2);
+  counter++;
+}
+void blinkR(){
+  if(counter % 2 == 0){
+    shortRed();
+    longRed();
+    shortRed();  
+  }else{
+    shortGreen();
+    longGreen();
+    shortGreen();
+  }
+  delay(TIMEUNIT*2);
+  counter++;
+}
+void blinkD(){
+  if(counter % 2 == 0){
+    longRed();
+    shortRed();
+    shortRed();  
+  }else{
+    longGreen();
+    shortGreen();
+    shortGreen();
+  }
+  delay(TIMEUNIT*2);
+  counter++;
+}
+void blinkV(){
+  if(counter % 2 == 0){
+    shortRed();
+    shortRed();
+    shortRed();
+    longRed();
+  }else{
+    shortGreen();
+    shortGreen();
+    shortGreen();
+    longGreen();
+  }
+  delay(TIMEUNIT*2);
+  counter++;
+}
+void blinkS(){
+  if(counter % 2 == 0){
+    shortRed();
+    shortRed();
+    shortRed();
+  }else{
+    shortGreen();
+    shortGreen();
+    shortGreen();  
+  }
+  delay(TIMEUNIT*2);
+  counter++;
+}
+void blinkI(){
+  if(counter % 2 == 0){
+    shortRed();
+    shortRed();  
+  }else{
+    shortGreen();
+    shortGreen();
+  }
+  delay(TIMEUNIT*2);
+  counter++;
+}
+void blinkW(){
+  if(counter % 2 == 0){
+    shortRed();
+    longRed();
+    longRed();  
+  }else{
+    shortGreen();
+    longGreen();
+    longGreen();
+  }
+  delay(TIMEUNIT*2);
+  counter++;
+}
+void blinkN(){
+  if(counter % 2 == 0){
+    longRed();
+    shortRed();  
+  }else{
+    longGreen();
+    shortGreen();
+  }
+  delay(TIMEUNIT*2);
+  counter++;
+}
+void blinkE(){
+  if(counter % 2 == 0){
+    shortRed();
+  }else{
+    shortGreen();
+  }
+  delay(TIMEUNIT*2);
+  counter++;
+}
+
+void shortGreen(){
+  blinkSleep(8, TIMEUNIT);
+}
+void shortRed(){
+  blinkSleep(13, TIMEUNIT);
+}
+void longGreen(){
+  blinkSleep(8, TIMEUNIT*3);
+}
+void longRed(){
+  blinkSleep(13, TIMEUNIT*3);
+}
+void blinkSleep(int pin, int sleep) {
+  delay(TIMEUNIT);
+  digitalWrite(pin, HIGH);
+  delay(sleep);
+  digitalWrite(pin, LOW);
+}
+
